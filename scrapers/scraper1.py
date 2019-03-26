@@ -12,10 +12,15 @@ pdf_as = root.cssselect(".dpc-elemental-models-elementpublicationlist .items a")
 for a in pdf_as:
 	pdf_urls.append("https://www.dpc.nsw.gov.au" + a.attrib['href'])
 
-print(pdf_urls)
+# print(pdf_urls)
 
 for pdf_url in pdf_urls:
+	
+
 	name = pdf_url.split("/")[-1]
+	# print(name + "," + pdf_url)
 	r = requests.get(pdf_url)
 	with open('pdfs/{name}'.format(name=name), 'wb') as f:
 		f.write(r.content)
+
+
